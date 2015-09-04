@@ -1,0 +1,128 @@
+<link rel="import"
+      href="bower_components/polymer/polymer.html">
+<!-- Iron input is used while you need to do input custom element -->
+<link rel="import"
+      href="bower_components/iron-input/iron-input.html">
+
+<script>
+  Polymer({
+    is: "dreams-element",
+    // add a callback to the element
+    ready: function() {
+      this.textContent = "This is dreams element"
+    }
+  });
+</script>
+
+
+
+<!-- Load DOM into Local DOM -->
+<dom-module id="dom-element">
+
+  <template>
+    <p>Try to load DOM inside local DOM</p>
+  </template>
+
+  <script>
+    Polymer({
+      is: "dom-element"
+    });
+  </script>
+
+</dom-module>
+
+<dom-module id="picture-frame">
+
+  <template>
+
+    <style>
+      div {
+        display: inline-block;
+        background-color: #ccc;
+        border-radius: 8px;
+        padding: 4px;
+      }
+    </style>
+    <div>
+      <!-- content tag will render the child element -->
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: "picture-frame",
+    });
+  </script>
+
+</dom-module>
+
+<!-- Data Binding -->
+
+<dom-module id="name-tag">
+
+  <template>
+    <!-- this will bind your variable -->
+    <b>{{apps}}</b> is a cool apps. Every of us should understand its code
+  </template>
+
+  <script>
+  Polymer({
+    is: "name-tag",
+    ready: function() {
+      this.apps = "Dreams";
+    }
+  });
+  </script>
+
+</dom-module>
+
+<!-- Declare property with data binding>-->
+
+<dom-module id="configurable-name-tag">
+
+  <template>
+    <b>{{apps}}</b> is the another cool Apps that will show you Voip Data Usage in a Cool Graph.
+  </template>
+
+  <script>
+    Polymer({
+      is: "configurable-name-tag",
+      properties: {
+        apps: {
+          type: String,
+          value: "Dreams"
+        }
+      }
+    });
+  </script>
+
+</dom-module>
+
+
+<!-- Bind custom input element to a property -->
+
+<dom-module id="editable-apps-tag">
+
+  <template>
+    <p>
+    <strong>{{apps}}</strong> is the most coolest apps.
+    </p>
+    <!-- iron-input exposes a two-way bindable input value -->
+    <input is="iron-input" bind-value="{{apps}}"
+      placeholder="Your apps name here...">
+  </template>
+
+  <script>
+    Polymer({
+      is: "editable-apps-tag",
+      properties: {
+        owner: {
+          type: String,
+          value: "Dreams"
+        }
+      }
+    });
+  </script>
+
+</dom-module>
